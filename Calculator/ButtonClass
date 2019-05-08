@@ -1,0 +1,62 @@
+class Button {
+  // Member Variables
+  int x, y, w, h, v;
+  String op;
+  color c;
+  boolean hov, num;
+
+  // Multiple Constructors
+  Button(int x, int y, int w, int h, color c) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.c = c;
+    hov = false;
+  }
+
+  Button asNumber(int v) {
+    this.v = v;
+    num = true;
+    return this;
+  }
+
+  Button asOperator(String op) {
+    this.op = op;
+    num = false;
+    return this;
+  }
+
+
+  // Display Method
+  void display() {
+    if (num) {
+      rectMode(CENTER);
+      if (hov) {
+        fill(160);
+      } else {
+        fill(c);
+      }
+      rect(x, y, w, h, 5);
+      textAlign(CENTER, CENTER);
+      fill(0);
+      text(v, x, y);
+    } else {
+      rectMode(CENTER);
+      if (hov) {
+        fill(160);
+      } else {
+        fill(c);
+      }      
+      rect(x, y, w, h, 5);
+      textAlign(CENTER, CENTER);
+      fill(0);
+      text(op, x, y);
+    }
+  }
+
+  // Hover Method
+  void hover() {
+    hov = mouseX > x-w/2 && mouseX < x+w/2 && mouseY > y-h/2 && mouseY < y+h/2;
+  }
+}
