@@ -1,0 +1,149 @@
+//Connor Kendell
+//11/2/18
+//Calculator
+
+Button[] numBtns = new Button[10];
+Button[] opBtns = new Button[8];
+String displayVal, leftVal, rightVal;
+char opVal;
+float result;
+boolean firstNum;
+
+
+void setup () {
+  size(235, 460); 
+  numBtns[0] = new Button(115, 410, 35, 20, color(200)).asNumber(0);
+  numBtns[1] = new Button(50, 280, 35, 20, color(200)).asNumber(1);
+  numBtns[2] = new Button(115, 290, 35, 20, color(200)).asNumber(2);
+  numBtns[3] = new Button(180, 280, 35, 20, color(200)).asNumber(3);
+  numBtns[4] = new Button(50, 320, 35, 20, color(200)).asNumber(4);
+  numBtns[5] = new Button(115, 330, 35, 20, color(200)).asNumber(5);
+  numBtns[6] = new Button(180, 320, 35, 20, color(200)).asNumber(6);
+  numBtns[7] = new Button(50, 360, 35, 20, color(200)).asNumber(7);
+  numBtns[8] = new Button(115, 370, 35, 20, color(200)).asNumber(8);
+  numBtns[9] = new Button(180, 360, 35, 20, color(200)).asNumber(9);
+
+  opBtns[0] = new Button(95, 240, 35, 25, color(200)).asOperator("+");
+  opBtns[1] = new Button(130, 240, 35, 25, color(200)).asOperator("-");
+  opBtns[2] = new Button(165, 240, 35, 25, color(200)).asOperator("*");
+  opBtns[3] = new Button(200, 240, 35, 25, color(200)).asOperator("÷");
+
+  opBtns[4] = new Button(50, 400, 35, 20, color(200)).asOperator("±");
+  opBtns[5] = new Button(180, 400, 35, 20, color(200)).asOperator(".");
+
+  //  opBtns[6] = new Button(190, 300, 35, 20, color(200)).asOperator("");
+  //  opBtns[7] = new Button(190, 340, 35, 20, color(200)).asOperator("");
+  //  opBtns[8] = new Button(190, 380, 35, 20, color(200)).asOperator("");
+  //  opBtns[9] = new Button(190, 420, 35, 20, color(200)).asOperator("");
+
+  opBtns[6] = new Button(115, 200, 60, 35, color(200)).asOperator("Enter");
+  opBtns[7] = new Button(40, 220, 40, 40, color(200)).asOperator("Clear");
+  displayVal = "0.0";
+  leftVal = "";
+  rightVal = "";
+  opVal = ' ';
+  result = 0.0;
+  firstNum = true;
+}
+
+void draw () {
+  background(#647687);
+  for (int i=0; i<numBtns.length; i++) {
+    numBtns[i].display();
+    numBtns[i].hover();
+  }
+  for (int i=0; i<opBtns.length; i++) {
+    opBtns[i].display();
+    opBtns[i].hover();
+  }
+  updateDisplay();
+}
+
+
+
+void updateDisplay() {
+  rectMode(CENTER);
+  fill(55, 200, 110);
+  rect(120, 120, 200, 135, 10);
+  fill(0);
+  textAlign(RIGHT);
+  textSize(15);
+  text(displayVal, 210, 180);
+}
+
+void mouseReleased() {
+  for (int i=0; i<numBtns.length; i++) {
+    if (numBtns[i].hov) {
+      if (firstNum) {
+        leftVal += str(numBtns[i].v);
+        displayVal = leftVal;
+      } else {
+        rightVal += str(numBtns[i].v);
+        displayVal = rightVal;
+      }
+    }
+  }
+  for (int i=0; i<opBtns.length; i++) {
+    if (opBtns[i].hov) {
+      if (opBtns[i].op == "+") {
+        opVal = '+';
+        firstNum = false;
+      } else if (opBtns[i].op == "-") {
+        opVal = '-';
+        firstNum = false;
+      } else if (opBtns[i].op == "*") {
+        opVal = 'x';
+        firstNum = false;
+      } else if (opBtns[i].op == "÷") {
+        opVal = '÷';
+        firstNum = false;
+      } else if (opBtns[i].op == "Enter") {
+        performCalc();
+      } else if (opBtns[i].op == "Clear") {
+        clearButton();
+      } else if (opBtns[i].op == ".") {
+        if (firstNum) {
+          leftVal = opBtns[i].op;
+          displayVal = leftVal;
+        } else {
+          rightVal += opBtns[i].op;
+          displayVal = rightVal;
+        }
+      } else if (opBtns[i].op == "±") {
+        if (firstNum) {
+          leftVal = str(float(leftVal) * -1);
+          displayVal = leftVal;
+        } else {
+          rightVal = str(float(rightVal) * -1);
+          displayVal = rightVal;
+        }
+      }
+    }
+  }
+}
+
+void performCalc() {
+  if (opVal == '+') {
+    result = float(leftVal) + float(rightVal);
+    displayVal = str(result);
+  } else if (opVal == '-') {
+    result = float(leftVal) - float(rightVal);
+    displayVal = str(result);
+  } else if (opVal == 'x') {
+    result = float(leftVal) * float(rightVal);
+    displayVal = str(result);
+  } else if (opVal == '÷') {
+    result = float(leftVal) / float(rightVal);
+    displayVal = str(result);
+  }
+  firstNum = true;
+}
+
+void clearButton() {
+  displayVal = "0.0";
+  leftVal = "";
+  rightVal = "";
+  opVal = ' ';
+  result = 0.0;
+  firstNum = true;
+}
