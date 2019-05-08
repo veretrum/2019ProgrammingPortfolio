@@ -9,4 +9,4 @@ Object oriented calculator with features including...
 
 ![Calculator]()
 
-Source code for calculator: here
+[Source code for calculator: here](https://github.com/veretrum/2019ProgrammingPortfolio/tree/master/Calculator)
