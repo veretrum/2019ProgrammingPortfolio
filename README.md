@@ -31,4 +31,19 @@ ZOOG is a ZOOG that ZOOGS. Make sure you don't pronounce it ZOOG, because that m
 [ZOOG](https://github.com/veretrum/2019ProgrammingPortfolio/tree/master/Zoog)
 
 
-## 
+## Moody Blues
+##### Do you remember? 2018's September
+My Stand ability allows me to create multiple different faces, each one different from the last!
+
+![Face](https://github.com/veretrum/2019ProgrammingPortfolio/blob/master/Images/moodyblues.png?raw=true "why")
+
+Moody Blues' [Stats](https://github.com/veretrum/2019ProgrammingPortfolio/tree/master/MakeAFace)
+
+
+## I Want To Die
+##### Jan. 2019
+classic car game of 99 bottles. unfortunely the Spirytus had to be censored.
+
+No picture, text based
+
+![code](https://github.com/veretrum/2019ProgrammingPortfolio/tree/master/Bottles)
