@@ -12,4 +12,8 @@ Object oriented calculator with features including... man I don't know, why am I
 
 Source code for calculator: [here](https://github.com/veretrum/2019ProgrammingPortfolio/tree/master/Calculator)
 
+## I also made this spaceship
+##### Stopped playing Jan. 2018
+Spaceship you can play around with. Experience over 8 Levels! In my brand new game, Hogan's Castle!
+
 
