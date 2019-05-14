@@ -1,5 +1,6 @@
 ## Welcome to Connor Kendell's Programming Portfolio
 2019
+#### Email: connkend96461@granitesd.org
 
 
 
